@@ -56,7 +56,7 @@ public class Company {
                 while (infile.hasNext()) {
                     String line = infile.nextLine();
                     String [] par = line.split(",");
-
+                    // TODO Check Input and Correction
                     String name = par[0].trim();
                     ArrayList<Integer> price = new ArrayList<>();
                     for (int i = 1; i < par.length; i++)
