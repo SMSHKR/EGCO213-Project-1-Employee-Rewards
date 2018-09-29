@@ -27,7 +27,7 @@ public class Company {
 
                 while (infile.hasNext()) {
                     String line = infile.nextLine();
-                    String[] par = line.split(",");
+                    String [] par = line.split(",");
 
                     String name = par[0].trim();
                     int price = Integer.parseInt(par[1].trim());
@@ -43,6 +43,36 @@ public class Company {
 
     }
 
+    private static void inputEmployee(ArrayList<Employee> AL) {
+
+        Scanner kbScan = new Scanner(System.in);
+        String employeeFile = "test/employees.txt";
+
+        boolean opened = false;
+        while (!opened)
+            try (Scanner infile = new Scanner(new File(employeeFile))) {
+                opened = true;
+
+                while (infile.hasNext()) {
+                    String line = infile.nextLine();
+                    String [] par = line.split(",");
+
+                    String name = par[0].trim();
+                    ArrayList<Integer> price = new ArrayList<>();
+                    for (int i = 1; i < par.length; i++)
+                        price.add(Integer.parseInt(par[i].trim()));
+
+                    AL.add(new Employee(name, price));
+                }
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.out.print("Enter employee file = ");
+                employeeFile = kbScan.next();
+            }
+
+    }
+
     public static void main(String[] args) {
         // test();
 
@@ -50,7 +80,9 @@ public class Company {
         inputProduct(productAL);
         for (Product productArray : productAL) productArray.testPrint();
 
-        // TODO inputEmployee()
+        ArrayList<Employee> employeeAL = new ArrayList<>();
+        inputEmployee(employeeAL);
+        for (Employee employeeArray : employeeAL) employeeArray.testPrint();
 
         // TODO inputOvertime()
 

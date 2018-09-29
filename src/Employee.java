@@ -8,10 +8,17 @@ public class Employee {
     private int overtimeReward;
     private int totalReward;
     // Constructor
-    public Employee() {
-
+    public Employee(String inName, ArrayList<Integer> iAL) {
+        name = inName;
+        sales.addAll(iAL);
     }
     // Method
     private void calculateRewards() { }
+    // Debug Method
+    public void testPrint() {
+        System.out.print(name + ", ");
+        for (int salesN : sales) System.out.print(salesN + ", ");
+        System.out.println();
+    }
 
 }
