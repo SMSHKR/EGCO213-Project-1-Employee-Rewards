@@ -27,18 +27,29 @@ public class Company {
 
                 while (infile.hasNext()) {
                     String line = infile.nextLine();
-                    String [] par = line.split(",");
+                    boolean error = true;
+                    while (error)
+                        try {
+                            String [] par = line.split(",");
 
-                    String name = par[0].trim();
-                    int price = Integer.parseInt(par[1].trim());
+                            String name = par[0].trim();
+                            int price = Integer.parseInt(par[1].trim());
 
-                    AL.add(new Product(name, price));
+                            AL.add(new Product(name, price));
+                            error = false;
+
+                        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+                            System.err.println("Input Error : " + line);
+                            System.out.print  ("Correction  : ");
+                            line = kbScan.nextLine();
+                        }
                 }
 
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.err.println(e);
                 System.out.print("Enter product file = ");
                 productFile = kbScan.next();
+                kbScan.nextLine(); // Fix nextLine() bug
             }
 
     }
