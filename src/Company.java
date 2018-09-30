@@ -4,24 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Company {
-/*
+
     private static void test() {
-        try (Scanner file = new Scanner(new File("test/products.txt"))) {
-            while (file.hasNext())
-                System.out.println(file.nextLine());
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
     }
-*/
+
     private static void inputProduct(ArrayList<Product> AL) {
 
         Scanner kbScan = new Scanner(System.in);
         String productFile = "test/products.txt";
 
         boolean opened = false;
-        while (!opened)
+        while (!opened) {
             try (Scanner infile = new Scanner(new File(productFile))) {
                 opened = true;
 
@@ -53,6 +47,7 @@ public class Company {
                 productFile = kbScan.next();
                 kbScan.nextLine(); // Fix nextLine() bug
             }
+        }
 
     }
 
@@ -62,7 +57,7 @@ public class Company {
         String employeeFile = "test/employees.txt";
 
         boolean opened = false;
-        while (!opened)
+        while (!opened) {
             try (Scanner infile = new Scanner(new File(employeeFile))) {
                 opened = true;
 
@@ -99,10 +94,55 @@ public class Company {
                 employeeFile = kbScan.next();
                 kbScan.nextLine(); // Fix nextLine() bug
             }
+        }
+
+    }
+
+    private static void inputOvertime(ArrayList<Employee> eAL) {
+
+        Scanner kbScan = new Scanner(System.in);
+        String overtimeFile = "test/overtime.txt";
+
+        boolean opened = false;
+        while (!opened) {
+            try (Scanner infile = new Scanner(new File(overtimeFile))) {
+                opened = true;
+
+                while (infile.hasNext()) {
+                    String line = infile.nextLine();
+
+                    boolean error = true;
+                    while (error) {
+                        try {
+                            String [] par = line.split(",");
+                            int month = Integer.parseInt(par[0]);
+                            for (int i = 1; i < par.length; i++) {
+                                int index = eAL.indexOf(par[i]);
+                                if (index >= 0) // FIXME index always -1
+                                    eAL.get(index).addOvertime(month);
+                            }
+                            error = false;
+
+                        } catch (IllegalArgumentException e) {
+                            System.err.println("Input Error : " + line);
+                            System.out.print  ("Correction  : ");
+                            line = kbScan.nextLine();
+                        }
+                    }
+                }
+
+            } catch (FileNotFoundException e) {
+                System.err.println(e);
+                System.out.print("Enter overtime file = ");
+                overtimeFile = kbScan.next();
+                kbScan.nextLine(); // Fix nextLine() bug
+            }
+        }
 
     }
 
     public static void main(String[] args) {
+
         // test();
 
         ArrayList<Product> productAL = new ArrayList<>();
@@ -111,9 +151,8 @@ public class Company {
 
         ArrayList<Employee> employeeAL = new ArrayList<>();
         inputEmployee(employeeAL, productAL);
+        inputOvertime(employeeAL);
         for (Employee employeeArray : employeeAL) employeeArray.testPrint();
-
-        // TODO inputOvertime()
 
     }
 
