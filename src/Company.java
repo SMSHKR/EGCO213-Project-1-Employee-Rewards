@@ -28,7 +28,7 @@ public class Company {
                 while (infile.hasNext()) {
                     String line = infile.nextLine();
                     boolean error = true;
-                    while (error)
+                    while (error) {
                         try {
                             String [] par = line.split(",");
 
@@ -43,6 +43,7 @@ public class Company {
                             System.out.print  ("Correction  : ");
                             line = kbScan.nextLine();
                         }
+                    }
                 }
 
             } catch (FileNotFoundException e) {
@@ -54,7 +55,7 @@ public class Company {
 
     }
 
-    private static void inputEmployee(ArrayList<Employee> AL) {
+    private static void inputEmployee(ArrayList<Employee> eAL, ArrayList<Product> pAL) {
 
         Scanner kbScan = new Scanner(System.in);
         String employeeFile = "test/employees.txt";
@@ -66,20 +67,36 @@ public class Company {
 
                 while (infile.hasNext()) {
                     String line = infile.nextLine();
-                    String [] par = line.split(",");
-                    // TODO Check Input and Correction
-                    String name = par[0].trim();
-                    ArrayList<Integer> price = new ArrayList<>();
-                    for (int i = 1; i < par.length; i++)
-                        price.add(Integer.parseInt(par[i].trim()));
 
-                    AL.add(new Employee(name, price));
+                    boolean error = true;
+                    while (error) {
+                        try {
+                            String [] par = line.split(",");
+
+                            String name = par[0].trim();
+                            ArrayList<Integer> priceAL = new ArrayList<>();
+                            for (int i = 1; i <= pAL.size(); i++) {
+                                int price = Integer.parseInt(par[i].trim());
+                                if (price < 0) throw new IllegalArgumentException();
+                                priceAL.add(price);
+                            }
+
+                            eAL.add(new Employee(name, priceAL));
+                            error = false;
+
+                        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+                            System.err.println("Input Error : " + line);
+                            System.out.print  ("Correction  : ");
+                            line = kbScan.nextLine();
+                        }
+                    }
                 }
 
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.err.println(e);
                 System.out.print("Enter employee file = ");
                 employeeFile = kbScan.next();
+                kbScan.nextLine(); // Fix nextLine() bug
             }
 
     }
@@ -92,7 +109,7 @@ public class Company {
         for (Product productArray : productAL) productArray.testPrint();
 
         ArrayList<Employee> employeeAL = new ArrayList<>();
-        inputEmployee(employeeAL);
+        inputEmployee(employeeAL, productAL);
         for (Employee employeeArray : employeeAL) employeeArray.testPrint();
 
         // TODO inputOvertime()
