@@ -34,11 +34,12 @@ public class Company {
 
                             String name = par[0].trim();
                             int price = Integer.parseInt(par[1].trim());
+                            if (price < 0) throw new IllegalArgumentException();
 
                             AL.add(new Product(name, price));
                             error = false;
 
-                        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+                        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
                             System.err.println("Input Error : " + line);
                             System.out.print  ("Correction  : ");
                             line = kbScan.nextLine();
