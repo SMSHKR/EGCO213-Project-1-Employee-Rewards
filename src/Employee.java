@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Employee {
     // Variable
@@ -19,6 +20,14 @@ public class Employee {
         System.out.print(name + ", ");
         for (int salesN : sales) System.out.print(salesN + ", ");
         System.out.println();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name);
     }
 
 }

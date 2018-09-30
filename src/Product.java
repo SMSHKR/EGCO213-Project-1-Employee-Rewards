@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Product {
     // Variable
     private String name;
@@ -13,5 +15,13 @@ public class Product {
 
     // Debug Method
     public void testPrint() { System.out.println( name + ", " + price ); }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name);
+    }
 
 }
