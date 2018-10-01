@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
     // Variable
     private ArrayList<Integer> sales = new ArrayList<>();
     private ArrayList<Integer> overtimeMonth = new ArrayList<>();
@@ -41,5 +41,8 @@ public class Employee {
         }
         return false;
     }
+
+    @Override
+    public int compareTo(Employee other) { return name.compareToIgnoreCase(other.name); }
 
 }

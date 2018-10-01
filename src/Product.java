@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Product {
+public class Product implements Comparable<Product> {
     // Variable
     private String name;
     private int price;
@@ -23,5 +23,8 @@ public class Product {
         Product product = (Product) o;
         return Objects.equals(name, product.name);
     }
+
+    @Override
+    public int compareTo(Product other) { return name.compareToIgnoreCase(other.name); }
 
 }
