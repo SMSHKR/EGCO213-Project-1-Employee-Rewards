@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Company {
 
     private static void test() {
-
+  System.out.print("boat");
     }
 
     private static void inputProduct(ArrayList<Product> AL) {
