@@ -17,8 +17,8 @@ public class Employee implements Comparable<Employee> {
     }
 
     // Method
-    private void calculateRewards() //JK Work
-    {
+    private void calculateRewards() {
+        // TODO JK Work
     }
 
     public void addOvertime(int month) {
