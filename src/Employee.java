@@ -9,13 +9,18 @@ public class Employee implements Comparable<Employee> {
     private int salesReward;
     private int overtimeReward;
     private int totalReward;
+
     // Constructor
     public Employee(String inName, ArrayList<Integer> iAL) {
         name = inName;
         sales.addAll(iAL);
     }
+
     // Method
-    private void calculateRewards() { }
+    private void calculateRewards() //JK Work
+    {
+    }
+
     public void addOvertime(int month) {
         if (month > 12 || month < 1) return;
         if (overtimeMonth.contains(month)) return;
