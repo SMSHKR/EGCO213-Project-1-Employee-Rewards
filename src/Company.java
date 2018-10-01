@@ -5,10 +5,6 @@ import java.util.Scanner;
 
 public class Company {
 
-    private static void test() {
-  System.out.print("boat");
-    }
-
     private static void inputProduct(ArrayList<Product> AL) {
 
         Scanner kbScan = new Scanner(System.in);
@@ -142,8 +138,6 @@ public class Company {
     }
 
     public static void main(String[] args) {
-
-        // test();
 
         ArrayList<Product> productAL = new ArrayList<>();
         inputProduct(productAL);
