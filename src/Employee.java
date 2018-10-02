@@ -6,9 +6,9 @@ public class Employee implements Comparable<Employee> {
     private ArrayList<Integer> sales = new ArrayList<>();
     private ArrayList<Integer> overtimeMonth = new ArrayList<>();
     private String name;
-    private int salesReward;
+    private double salesReward;
     private int overtimeReward;
-    private int totalReward;
+    private double totalReward;
 
     // Constructor
     public Employee(String inName, ArrayList<Integer> iAL) {
@@ -17,8 +17,25 @@ public class Employee implements Comparable<Employee> {
     }
 
     // Method
-    private void calculateRewards() {
-        // TODO JK Work
+    private void calculateRewards(int price)
+    {
+        if(price<10000)
+        {
+            salesReward = ((1.01)*price);
+        }
+        else if(price>=10000 ||price<30000)
+        {
+            salesReward = ((1.15)*price);
+        }
+        else if(price>=30000 || price <50000)
+        {
+            salesReward = ((1.20)*price);
+        }
+        else if(price>=50000)
+        {
+            salesReward = ((1.25)*price);
+        }
+        overtimeReward = overtimeMonth.size()*3000;
     }
 
     public void addOvertime(int month) {
