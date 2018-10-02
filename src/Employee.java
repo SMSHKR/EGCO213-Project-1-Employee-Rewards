@@ -21,6 +21,7 @@ public class Employee implements Comparable<Employee> {
     // Method
     private void calculateRewards(int price)
     {
+        // FIXME
         if(price<10000)
         {
             salesReward = ((1.01)*price);
@@ -60,11 +61,6 @@ public class Employee implements Comparable<Employee> {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
         return Objects.equals(name, employee.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
     }
 
     @Override
