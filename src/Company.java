@@ -113,9 +113,9 @@ public class Company {
                             String [] par = line.split(",");
                             int month = Integer.parseInt(par[0]);
                             for (int i = 1; i < par.length; i++) {
-                                Employee dummy = new Employee(par[i]);
+                                Employee dummy = new Employee(par[i].trim());
                                 int index = eAL.indexOf(dummy);
-                                if (index >= 0) // FIXME index always -1
+                                if (index >= 0)
                                     eAL.get(index).addOvertime(month);
                             }
                             error = false;
