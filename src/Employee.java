@@ -16,6 +16,8 @@ public class Employee implements Comparable<Employee> {
         sales.addAll(iAL);
     }
 
+    public Employee(String inName) { name = inName; }
+
     // Method
     private void calculateRewards(int price)
     {
@@ -55,13 +57,14 @@ public class Employee implements Comparable<Employee> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null) return false;
-        if (o.getClass() == name.getClass()) return name.equalsIgnoreCase((String) o);
-        if (getClass() == o.getClass()) {
-            Employee employee = (Employee) o;
-            return Objects.equals(name, employee.name);
-        }
-        return false;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 
     @Override

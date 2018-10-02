@@ -25,6 +25,6 @@ public class Product implements Comparable<Product> {
     }
 
     @Override
-    public int compareTo(Product other) { return name.compareToIgnoreCase(other.name);
-    }
+    public int compareTo(Product other) { return name.compareToIgnoreCase(other.name); }
+
 }
