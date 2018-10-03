@@ -1,9 +1,28 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Company {
+
+    public static void main(String[] args) {
+
+        ArrayList<Product> productAL = new ArrayList<>();
+        inputProduct(productAL);
+        // for (Product productArray : productAL) productArray.testPrint();
+
+        ArrayList<Employee> employeeAL = new ArrayList<>();
+        inputEmployee(employeeAL, productAL);
+        inputOvertime(employeeAL);
+
+        Collections.sort(productAL);
+        Collections.sort(employeeAL);
+
+        for (Employee employeeArray : employeeAL) employeeArray.testPrint();
+        for (Product productArray : productAL) productArray.testPrint();
+
+    }
 
     private static void inputProduct(ArrayList<Product> AL) {
 
@@ -73,7 +92,7 @@ public class Company {
                                 priceAL.add(price);
                             }
 
-                            eAL.add(new Employee(name, priceAL));
+                            eAL.add(new Employee(name, priceAL, pAL));
                             error = false;
 
                         } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
@@ -135,19 +154,6 @@ public class Company {
                 kbScan.nextLine(); // Fix nextLine() bug
             }
         }
-
-    }
-
-    public static void main(String[] args) {
-
-        ArrayList<Product> productAL = new ArrayList<>();
-        inputProduct(productAL);
-        for (Product productArray : productAL) productArray.testPrint();
-
-        ArrayList<Employee> employeeAL = new ArrayList<>();
-        inputEmployee(employeeAL, productAL);
-        inputOvertime(employeeAL);
-        for (Employee employeeArray : employeeAL) employeeArray.testPrint();
 
     }
 
