@@ -4,13 +4,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-
-import static javafx.application.Application.launch;
 
 public class Company extends Application {
 
@@ -22,7 +22,7 @@ public class Company extends Application {
     { inputOvertime(eAL, "test/overtime.txt"); }
 
     public static void main(String[] args) {
-        launch(args);
+
         ArrayList<Product> productAL = new ArrayList<>();
         inputProduct(productAL);
 
@@ -39,9 +39,12 @@ public class Company extends Application {
         // for (Product productArray : productAL) productArray.testPrint();
 
         for (Employee employeeArray : employeeAL) employeeArray.testPrint();
-
         for (Product productArray : productAL) productArray.Print();
 
+        table gui = new table();
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setSize(600,200);
+        gui.setTitle("Hello");
 
 
     }
@@ -132,6 +135,25 @@ public class Company extends Application {
         }
 
     }
+    public static class table extends JFrame
+    {
+        JTable table;
+        public table()
+        {
+            setLayout(new FlowLayout());
+            String[] columnName = {"Name"};
+            Object[][] data = {
+                    {"GG","WTF"}
+            };
+            table = new JTable(data,columnName);
+            table.setPreferredScrollableViewportSize(new Dimension(500,50));
+            table.setFillsViewportHeight(true);
+
+            JScrollPane scrollPane = new JScrollPane(table);
+            add(scrollPane);
+        }
+
+    }
 
     private static void inputOvertime(ArrayList<Employee> eAL, String overtimeFile) {
 
@@ -178,7 +200,7 @@ public class Company extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Stage first = new Stage();
+        /*Stage first = new Stage();
 
         Button but = new Button();
         but.setText("TEST");
@@ -186,8 +208,11 @@ public class Company extends Application {
         first.setTitle("Employee Reward");
 
         StackPane layout = new StackPane();
+        layout.getChildren().add(but);
+
         Scene scene = new Scene(layout,800,600);
         first.setScene(scene);
-        first.show();
+        first.show();*/
     }
+
 }
