@@ -18,7 +18,6 @@ public class Employee implements Comparable<Employee> {
     }
     // Dummy Construtor
     public Employee(String inName) { name = inName; }
-
     // Method
     private void calculateRewards(ArrayList<Product> pAL) {
         for (int i = 0; i < salesAmount.size(); i++) {
@@ -30,7 +29,6 @@ public class Employee implements Comparable<Employee> {
             else                         salesReward += salesPrice * 0.025;
         }
     }
-
     public void addOvertime(int month) {
         if (month > 12 || month < 1) return;
         if (overtimeMonth.contains(month)) return;
@@ -49,7 +47,7 @@ public class Employee implements Comparable<Employee> {
         System.out.printf("%-" + nameLgh + "s  rewards (sales + overtime) = ", name);
         System.out.printf("%,7.0f (%,7.0f + %,6d) baht\n", salesReward + overtimeReward, salesReward, overtimeReward);
     }
-
+    // Intellij IDEA Auto-generate
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

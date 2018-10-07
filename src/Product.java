@@ -25,7 +25,7 @@ public class Product implements Comparable<Product> {
         System.out.printf("%-" + nameLgh + "s ", name);
         System.out.printf("total sales = %4d units %,11d baht\n", totalSalesUnit, totalSalesBaht);
     }
-
+    // Intellij IDEA Auto-generate
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
