@@ -62,6 +62,7 @@ public class Company {
                             System.err.println("Input Error : " + line);
                             System.out.print  ("Correction  : ");
                             line = kbScan.nextLine();
+                            if (line.equals("")) error = false;
                         }
                     }
                 }
@@ -108,6 +109,7 @@ public class Company {
                             System.err.println("Input Error : " + line);
                             System.out.print  ("Correction  : ");
                             line = kbScan.nextLine();
+                            if (line.equals("")) error = false;
                         }
                     }
                 }
@@ -151,6 +153,7 @@ public class Company {
                             System.err.println("Input Error : " + line);
                             System.out.print  ("Correction  : ");
                             line = kbScan.nextLine();
+                            if (line.equals("")) error = false;
                         }
                     }
                 }
