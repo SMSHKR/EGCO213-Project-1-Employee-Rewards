@@ -6,10 +6,12 @@ public class Product implements Comparable<Product> {
     private int price;
     private int totalSalesUnit = 0;
     private int totalSalesBaht = 0;
+    private static int nameLgh = 0;
     // Constructor
     public Product(String inName, int inPrice) {
         name = inName;
         price = inPrice;
+        if (nameLgh < name.length()) nameLgh = name.length();
     }
     // Method
     public int getPrice() { return price; }
@@ -19,7 +21,10 @@ public class Product implements Comparable<Product> {
     }
     // Debug Method
     // public void testPrint() { System.out.println( name + ", " + price ); }
-    public void testPrint() { System.out.println( name + " = " + totalSalesUnit + ", " + totalSalesBaht ); }
+    public void testPrint() {
+        System.out.printf("%-" + nameLgh + "s ", name);
+        System.out.printf("total sales = %4d units %,11d baht\n", totalSalesUnit, totalSalesBaht);
+    }
 
     @Override
     public boolean equals(Object o) {

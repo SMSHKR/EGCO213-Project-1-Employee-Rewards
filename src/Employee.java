@@ -8,12 +8,13 @@ public class Employee implements Comparable<Employee> {
     private String name;
     private double salesReward = 0;
     private int overtimeReward = 0;
-
+    private static int nameLgh = 0;
     // Constructor
     public Employee(String inName, ArrayList<Integer> iAL, ArrayList<Product> pAL) {
         name = inName;
         salesAmount.addAll(iAL);
         calculateRewards(pAL);
+        if (nameLgh < name.length()) nameLgh = name.length();
     }
     // Dummy Construtor
     public Employee(String inName) { name = inName; }
@@ -45,7 +46,8 @@ public class Employee implements Comparable<Employee> {
      *  for (int ot : overtimeMonth) System.out.print(ot + ", ");
      *  System.out.println();
      */
-        System.out.printf("%s = %.0f ( %.0f + %d )\n", name, salesReward + overtimeReward, salesReward, overtimeReward);
+        System.out.printf("%-" + nameLgh + "s  rewards (sales + overtime) = ", name);
+        System.out.printf("%,7.0f (%,7.0f + %,6d) baht\n", salesReward + overtimeReward, salesReward, overtimeReward);
     }
 
     @Override

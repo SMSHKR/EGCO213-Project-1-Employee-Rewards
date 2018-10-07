@@ -26,7 +26,10 @@ public class Company {
         Collections.sort(productAL);
         Collections.sort(employeeAL);
 
+        System.out.println("=== Reward Processing ===");
         for (Employee employeeArray : employeeAL) employeeArray.testPrint();
+
+        System.out.println("\n=== Product Summary ===");
         for (Product productArray : productAL) productArray.testPrint();
 
     }
