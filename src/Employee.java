@@ -34,7 +34,7 @@ public class Employee implements Comparable<Employee> {
         if (month > 12 || month < 1) return;
         if (overtimeMonth.contains(month)) return;
         overtimeMonth.add(month);
-        overtimeReward += 3000;
+        overtimeReward = overtimeMonth.size() * 3000;
     }
     // Debug Method
     void testPrint() {
