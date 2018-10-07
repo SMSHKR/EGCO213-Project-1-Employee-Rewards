@@ -1,10 +1,18 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Company {
+import static javafx.application.Application.launch;
+
+public class Company extends Application {
 
     private static void inputProduct (ArrayList<Product> AL)
     { inputProduct(AL, "test/products.txt"); }
@@ -14,9 +22,10 @@ public class Company {
     { inputOvertime(eAL, "test/overtime.txt"); }
 
     public static void main(String[] args) {
-
+        launch(args);
         ArrayList<Product> productAL = new ArrayList<>();
         inputProduct(productAL);
+
         // for (Product productArray : productAL) productArray.testPrint();
 
         ArrayList<Employee> employeeAL = new ArrayList<>();
@@ -26,8 +35,14 @@ public class Company {
         Collections.sort(productAL);
         Collections.sort(employeeAL);
 
+        // for (Employee employeeArray : employeeAL) employeeArray.testPrint();
+        // for (Product productArray : productAL) productArray.testPrint();
+
         for (Employee employeeArray : employeeAL) employeeArray.testPrint();
-        for (Product productArray : productAL) productArray.testPrint();
+
+        for (Product productArray : productAL) productArray.Print();
+
+
 
     }
 
@@ -161,4 +176,18 @@ public class Company {
 
     }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Stage first = new Stage();
+
+        Button but = new Button();
+        but.setText("TEST");
+
+        first.setTitle("Employee Reward");
+
+        StackPane layout = new StackPane();
+        Scene scene = new Scene(layout,800,600);
+        first.setScene(scene);
+        first.show();
+    }
 }
