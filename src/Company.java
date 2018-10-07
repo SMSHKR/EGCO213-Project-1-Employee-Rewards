@@ -6,6 +6,13 @@ import java.util.Scanner;
 
 public class Company {
 
+    private static void inputProduct (ArrayList<Product> AL)
+    { inputProduct(AL, "test/products.txt"); }
+    private static void inputEmployee(ArrayList<Employee> eAL, ArrayList<Product> pAL)
+    { inputEmployee(eAL, pAL, "test/employees.txt"); }
+    private static void inputOvertime(ArrayList<Employee> eAL)
+    { inputOvertime(eAL, "test/overtime.txt"); }
+
     public static void main(String[] args) {
 
         ArrayList<Product> productAL = new ArrayList<>();
@@ -24,10 +31,9 @@ public class Company {
 
     }
 
-    private static void inputProduct(ArrayList<Product> AL) {
+    private static void inputProduct(ArrayList<Product> AL, String productFile) {
 
         Scanner kbScan = new Scanner(System.in);
-        String productFile = "test/products.txt";
 
         boolean opened = false;
         while (!opened) {
@@ -66,10 +72,9 @@ public class Company {
 
     }
 
-    private static void inputEmployee(ArrayList<Employee> eAL, ArrayList<Product> pAL) {
+    private static void inputEmployee(ArrayList<Employee> eAL, ArrayList<Product> pAL, String employeeFile) {
 
         Scanner kbScan = new Scanner(System.in);
-        String employeeFile = "test/employees.txt";
 
         boolean opened = false;
         while (!opened) {
@@ -113,10 +118,9 @@ public class Company {
 
     }
 
-    private static void inputOvertime(ArrayList<Employee> eAL) {
+    private static void inputOvertime(ArrayList<Employee> eAL, String overtimeFile) {
 
         Scanner kbScan = new Scanner(System.in);
-        String overtimeFile = "test/overtime.txt";
 
         boolean opened = false;
         while (!opened) {
