@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Company extends Application {
+public class Company {
 
     private static void inputProduct (ArrayList<Product> AL)
     { inputProduct(AL, "test/products.txt"); }
@@ -32,11 +32,6 @@ public class Company extends Application {
 
         System.out.println("\n=== Product Summary ===");
         for (Product productArray : productAL) productArray.testPrint();
-
-        table gui = new table();
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setSize(600,200);
-        gui.setTitle("Hello");
 
     }
 
@@ -169,42 +164,4 @@ public class Company extends Application {
         }
 
     }
-
-    private static class table extends JFrame
-    {
-        JTable table;
-        public table()
-        {
-            setLayout(new FlowLayout());
-            String[] columnName = {"Name"};
-            Object[][] data = {
-                    {"GG","WTF"}
-            };
-            table = new JTable(data,columnName);
-            table.setPreferredScrollableViewportSize(new Dimension(500,50));
-            table.setFillsViewportHeight(true);
-
-            JScrollPane scrollPane = new JScrollPane(table);
-            add(scrollPane);
-        }
-
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        /*Stage first = new Stage();
-
-        Button but = new Button();
-        but.setText("TEST");
-
-        first.setTitle("Employee Reward");
-
-        StackPane layout = new StackPane();
-        layout.getChildren().add(but);
-
-        Scene scene = new Scene(layout,800,600);
-        first.setScene(scene);
-        first.show();*/
-    }
-
 }
