@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.Objects;
 
 public class Product implements Comparable<Product> {
@@ -19,12 +20,16 @@ public class Product implements Comparable<Product> {
         totalSalesUnit += unit;
         totalSalesBaht = totalSalesUnit * price;
     }
-    // Debug Method
-    // public void testPrint() { System.out.println( name + ", " + price ); }
-    public void testPrint() {
+    public void Print() {
         System.out.printf("%-" + nameLgh + "s ", name);
         System.out.printf("total sales = %4d units %,11d baht\n", totalSalesUnit, totalSalesBaht);
     }
+    public void Print(PrintWriter writer) {
+        writer.printf("%-" + nameLgh + "s ", name);
+        writer.printf("total sales = %4d units %,11d baht\r\n", totalSalesUnit, totalSalesBaht);
+    }
+    // Debug Method
+    void testPrint() { System.out.println( name + ", " + price ); }
     // Intellij IDEA Auto-generate
     @Override
     public boolean equals(Object o) {

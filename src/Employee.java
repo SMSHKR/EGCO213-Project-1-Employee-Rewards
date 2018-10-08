@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -35,17 +36,21 @@ public class Employee implements Comparable<Employee> {
         overtimeMonth.add(month);
         overtimeReward = overtimeMonth.size() * 3000;
     }
+    public void Print() {
+        System.out.printf("%-" + nameLgh + "s rewards (sales + overtime) = ", name);
+        System.out.printf("%,7.0f (%,7.0f + %,6d) baht\n", salesReward + overtimeReward, salesReward, overtimeReward);
+    }
+    public void Print(PrintWriter writer) {
+        writer.printf("%-" + nameLgh + "s rewards (sales + overtime) = ", name);
+        writer.printf("%,7.0f (%,7.0f + %,6d) baht\r\n", salesReward + overtimeReward, salesReward, overtimeReward);
+    }
     // Debug Method
     void testPrint() {
-    /*
-     *  System.out.print(name + ", ");
-     *  for (int salesN : salesAmount) System.out.print(salesN + ", ");
-     *  System.out.println("\nOvertime Size : " + overtimeMonth.size());
-     *  for (int ot : overtimeMonth) System.out.print(ot + ", ");
-     *  System.out.println();
-     */
-        System.out.printf("%-" + nameLgh + "s  rewards (sales + overtime) = ", name);
-        System.out.printf("%,7.0f (%,7.0f + %,6d) baht\n", salesReward + overtimeReward, salesReward, overtimeReward);
+        System.out.print(name + ", ");
+        for (int salesN : salesAmount) System.out.print(salesN + ", ");
+        System.out.print("\nOvertime Month : ");
+        for (int ot : overtimeMonth) System.out.print(ot + ", ");
+        System.out.println("\nOvertime Size  : " + overtimeMonth.size());
     }
     // Intellij IDEA Auto-generate
     @Override

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -24,14 +25,30 @@ public class Company {
         inputEmployee(employeeAL, productAL);
         inputOvertime(employeeAL);
 
+        // for (Employee employeeArray : employeeAL) employeeArray.testPrint();
+
         Collections.sort(productAL);
         Collections.sort(employeeAL);
 
-        System.out.println("=== Reward Processing ===");
-        for (Employee employeeArray : employeeAL) employeeArray.testPrint();
+        try (PrintWriter writer = new PrintWriter(new File("summary.txt"))) {
 
-        System.out.println("\n=== Product Summary ===");
-        for (Product productArray : productAL) productArray.testPrint();
+            writer.println("=== Reward Processing ===");
+            for (Employee employeeArray : employeeAL) employeeArray.Print(writer);
+
+            writer.println("\n=== Product Summary ===");
+            for (Product productArray : productAL) productArray.Print(writer);
+
+        }
+        catch (Exception e) { e.printStackTrace(); }
+        finally {
+
+            System.out.println("=== Reward Processing ===");
+            for (Employee employeeArray : employeeAL) employeeArray.Print();
+
+            System.out.println("\n=== Product Summary ===");
+            for (Product productArray : productAL) productArray.Print();
+
+        }
 
     }
 
