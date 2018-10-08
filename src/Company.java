@@ -32,20 +32,20 @@ public class Company {
 
         try (PrintWriter writer = new PrintWriter(new File("summary.txt"))) {
 
-            writer.println("=== Reward Processing ===");
+            writer.println("\r\n=== Reward Processing ===\r\n");
             for (Employee employeeArray : employeeAL) employeeArray.Print(writer);
 
-            writer.println("\n=== Product Summary ===");
+            writer.println("\r\n=== Product Summary ===\r\n");
             for (Product productArray : productAL) productArray.Print(writer);
 
         }
         catch (Exception e) { e.printStackTrace(); }
         finally {
 
-            System.out.println("=== Reward Processing ===");
+            System.out.println("\n=== Reward Processing ===\n");
             for (Employee employeeArray : employeeAL) employeeArray.Print();
 
-            System.out.println("\n=== Product Summary ===");
+            System.out.println("\n=== Product Summary ===\n");
             for (Product productArray : productAL) productArray.Print();
 
         }
